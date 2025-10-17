@@ -1,6 +1,6 @@
 ---
-title: gitlab私有化部署
 layout: default
+title: gitlab私有化部署
 ---
 
 # gitlab私有化部署
