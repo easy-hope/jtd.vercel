@@ -27,30 +27,31 @@ win10建议下载[终端](https://apps.microsoft.com/detail/9n0dx20hk701?hl=zh-C
 
 ### git设置
 ```bash
-sudo echo TODO：用变量减少手动输入computer@wslORphy的麻烦
+sudo echo pre-hot
 
 sudo apt -y update 
 sudo apt -y install vim git git-lfs git-secret
 
+MYNAME="computer@wslORphy"
+git config --global user.name "${MYNAME}"
+git config --global user.email "${MYNAME}.cn"
 git config --global core.editor vim
 git config --global core.quotepath false
 git config --global alias.goa 'log --graph --pretty=oneline --abbrev-commit -n 15'
 git config --global alias.uiau "update-index --assume-unchanged"
 git config --global alias.dt "diff --text"
-git config --global user.name "computer@wslORphy"
-git config --global user.email "computer@wslORphy.cn"
 ```
 
 ### ssh-keygen
 ```bash
-ssh-keygen -t ed25519 -C "computer@wslORphy.work"
+ssh-keygen -t ed25519 -C "${MYNAME}.work"
 
 
 
 
 # 按回车3次
 
-ssh-keygen -t ed25519 -f ~/.ssh/root -C "computer@wslORphy.root"
+ssh-keygen -t ed25519 -f ~/.ssh/root -C "${MYNAME}.root"
     # 输密码2遍
 
 head ~/.ssh/*.pub  # 上传到git托管平台
@@ -82,9 +83,8 @@ cd gnupg-w32-2.5.12
     # 如果从不apt update会提示找不到patchelf
 sudo apt -y install build-essential libusb-1.0-0-dev libsqlite3-dev libldap-dev libreadline-dev patchelf  
 
-which pinentry
     # TODO：尝试使用这个带参数的make看能否简化对 ~/.gnupg/gpg-agent.conf 的手动配置
-    # make -f build-aux/speedo.mk this-native GPG_CONFIGURE_FLAGS="--with-pinentry-program=`which pinentry`
+    # make -f build-aux/speedo.mk this-native GPG_CONFIGURE_FLAGS="--with-pinentry-program=`which pinentry-curses`
 
 make -f build-aux/speedo.mk this-native
     # 如果不是 gnupg-w32-n.m.n_somedate.tar.xz 这样的带有lib的包，则改为以下命令，会慢
@@ -122,4 +122,12 @@ systemctl --user stop gpg-agent.socket
     # 编辑配置文件
 echo "pinentry-program `which pinentry-curses`" >> ~/.gnupg/gpg-agent.conf 
 gpg-connect-agent reloadagent /bye
+```
+
+#### 备份密钥
+想通过备份.gnupg和.ssh的方式备份密钥，建议通过tar保存权限位；恢复时仅需恢复pubring.kbx和private-keys-v1.d
+```bash
+tar -cpvf archive.tar ~/.gnupg ~/.ssh
+
+tar -xpvf archive.tar -C ~/
 ```
