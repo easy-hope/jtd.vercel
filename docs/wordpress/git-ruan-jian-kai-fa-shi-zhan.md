@@ -80,8 +80,9 @@ core.autocrlf=input会在提交时标准化为LF，适合Unix环境。
 无法确保每个人都设置恰当的core.autocrlf值。不过可以用[.gitattributes](http://bj.apsonic-moto.cn/2021/04/27/git-ruan-jian-kai-fa-shi-zhan/#ch10 ".gitattributes")
 
 4.4.4 创建参数化别名
-
-“! f() {do some processing }; f”
+```bash
+git config --global alias.fpma '! armor() { SECRETS_GPG_ARMOR=1 git secret hide -vFPm ; }; armor'
+```
 
 # ch05
 

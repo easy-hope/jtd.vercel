@@ -40,6 +40,8 @@ git config --global core.quotepath false
 git config --global alias.goa 'log --graph --pretty=oneline --abbrev-commit -n 15'
 git config --global alias.uiau "update-index --assume-unchanged"
 git config --global alias.dt "diff --text"
+git config --global alias.aa "add --all"
+git config --global alias.fpma '! armor() { SECRETS_GPG_ARMOR=1 git secret hide -vFPm ; }; armor'
 ```
 
 ### ssh-keygen
@@ -102,16 +104,15 @@ sudo make -f build-aux/speedo.mk install SYSROOT=/usr/local/gnupg25
 
 手动编译依赖库的方式详见[README](https://github.com/gpg/gnupg/blob/master/README)
 
-#### 环境变量与其他设置
+#### 环境变量
 ```bash
 echo 'export PATH="/usr/local/gnupg25/bin:$PATH"' | sudo tee /etc/profile.d/gnupg25.sh
-echo 'alias hfm="SECRETS_GPG_ARMOR=1 git secret hide -vFPm"' >> ~/.bash_aliases
 ```
 
 #### 运行时错误处理
 ```
 ps aux | grep gpg
-    # 如果显示 /usr/bin/gpg-agent --supervised 则停止预装版本
+    # 如果显示 /usr/bin/gpg-agent --supervised 则执行以下命令停止预装版本
 systemctl --user stop gpg-agent.socket
 ```
 
