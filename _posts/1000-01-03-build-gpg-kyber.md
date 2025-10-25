@@ -117,6 +117,7 @@ systemctl --user stop gpg-agent.socket
 ```
 
 #### 配置 gpg-agent
+本节内容在wsl需要做，在有图形界面的ubuntu不需要做
 ```bash
     # 告诉 GPG Agent 使用哪个 pinentry 程序；如果 .gnupg 目录不存在，先让 gpg 创建一个
 /usr/local/gnupg25/bin/gpg --list-keys
@@ -132,3 +133,4 @@ tar -cpvf archive.tar ~/.gnupg ~/.ssh
 
 tar -xpvf archive.tar -C ~/
 ```
+
