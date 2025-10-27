@@ -66,7 +66,6 @@ Host gitee.root
   User git
   IdentityFile ~/.ssh/root
 
-ssh -vT git@gitee.root
 ```
 
 ### git-secret
@@ -84,9 +83,6 @@ cd gnupg-w32-2.5.12
     # Quick build method on Unix
     # 如果从不apt update会提示找不到patchelf
 sudo apt -y install build-essential libusb-1.0-0-dev libsqlite3-dev libldap-dev libreadline-dev patchelf  
-
-    # TODO：尝试使用这个带参数的make看能否简化对 ~/.gnupg/gpg-agent.conf 的手动配置
-    # make -f build-aux/speedo.mk this-native GPG_CONFIGURE_FLAGS="--with-pinentry-program=`which pinentry-curses`
 
 make -f build-aux/speedo.mk this-native
     # 如果不是 gnupg-w32-n.m.n_somedate.tar.xz 这样的带有lib的包，则改为以下命令，会慢
@@ -129,8 +125,9 @@ gpg-connect-agent reloadagent /bye
 #### 备份密钥
 想通过备份.gnupg和.ssh的方式备份密钥，建议通过tar保存权限位；恢复时仅需恢复pubring.kbx和private-keys-v1.d
 ```bash
-tar -cpvf archive.tar ~/.gnupg ~/.ssh
+cd ~
+tar -cpvf archive.tar .gnupg .ssh
 
-tar -xpvf archive.tar -C ~/
+tar -xpvf archive.tar -C ~
 ```
 
