@@ -123,7 +123,7 @@ gpg-connect-agent reloadagent /bye
 ```
 
 #### 备份密钥
-想通过备份.gnupg和.ssh的方式备份密钥，建议通过tar保存权限位；恢复时仅需恢复pubring.kbx和private-keys-v1.d
+想通过备份.gnupg和.ssh的方式备份密钥，建议通过tar保存权限位；恢复时仅需恢复private-keys-v1.d，跨版本的恢复建议import公钥，如果提示“真的要更新偏好设置吗？”选择y
 ```bash
 cd ~
 tar -cpvf archive.tar .gnupg .ssh
