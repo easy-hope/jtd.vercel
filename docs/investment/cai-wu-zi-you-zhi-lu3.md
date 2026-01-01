@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 财务自由之路3
+title: 笔记：财务自由之路3
 parent: investment
 ---
 

@@ -1,3 +1,9 @@
+---
+layout: default
+title: 笔记：赢得输家的游戏
+parent: investment
+---
+
 索引方式：微信读书（竖屏）
 
 《赢得输家的游戏》读书笔记

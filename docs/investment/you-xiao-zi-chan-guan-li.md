@@ -1,3 +1,9 @@
+---
+layout: default
+title: 笔记：有效资产管理
+parent: investment
+---
+
 索引方式：微信读书（竖屏）
 
 出版时间：2013-02

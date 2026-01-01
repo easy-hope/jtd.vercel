@@ -1,3 +1,9 @@
+---
+layout: default
+title: 笔记：解读基金
+parent: investment
+---
+
 索引方式：纸质书from广外图书馆
 
 《解读基金》读书笔记

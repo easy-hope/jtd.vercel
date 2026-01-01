@@ -1,3 +1,9 @@
+---
+layout: default
+title: 笔记：哈利·布朗的永久投资组合
+parent: investment
+---
+
 索引方式：微信读书（竖屏）
 
 《哈利·布朗的永久投资组合》读书笔记
